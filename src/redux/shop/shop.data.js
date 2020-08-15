@@ -1,5 +1,5 @@
-const SHOP_DATA = [
-	{
+const SHOP_DATA = {
+	hats     : {
 		id        : 1,
 		title     : 'Hats',
 		routeName : 'hats',
@@ -60,7 +60,7 @@ const SHOP_DATA = [
 			}
 		]
 	},
-	{
+	sneakers : {
 		id        : 2,
 		title     : 'Sneakers',
 		routeName : 'sneakers',
@@ -86,8 +86,7 @@ const SHOP_DATA = [
 			{
 				id       : 13,
 				name     : 'Nike White AirForce',
-				imageUrl :
-					'https://i.ibb.co/1RcFPk0/white-nike-high-tops.png',
+				imageUrl : 'https://i.ibb.co/1RcFPk0/white-nike-high-tops.png',
 				price    : 160
 			},
 			{
@@ -116,7 +115,7 @@ const SHOP_DATA = [
 			}
 		]
 	},
-	{
+	jackets  : {
 		id        : 3,
 		title     : 'Jackets',
 		routeName : 'jackets',
@@ -153,7 +152,7 @@ const SHOP_DATA = [
 			}
 		]
 	},
-	{
+	womens   : {
 		id        : 4,
 		title     : 'Womens',
 		routeName : 'womens',
@@ -179,8 +178,7 @@ const SHOP_DATA = [
 			{
 				id       : 26,
 				name     : 'Red Dots Dress',
-				imageUrl :
-					'https://i.ibb.co/N3BN1bh/red-polka-dot-dress.png',
+				imageUrl : 'https://i.ibb.co/N3BN1bh/red-polka-dot-dress.png',
 				price    : 80
 			},
 			{
@@ -192,8 +190,7 @@ const SHOP_DATA = [
 			{
 				id       : 28,
 				name     : 'Yellow Track Suit',
-				imageUrl :
-					'https://i.ibb.co/v1cvwNf/yellow-track-suit.png',
+				imageUrl : 'https://i.ibb.co/v1cvwNf/yellow-track-suit.png',
 				price    : 135
 			},
 			{
@@ -204,7 +201,7 @@ const SHOP_DATA = [
 			}
 		]
 	},
-	{
+	mens     : {
 		id        : 5,
 		title     : 'Mens',
 		routeName : 'mens',
@@ -236,8 +233,7 @@ const SHOP_DATA = [
 			{
 				id       : 34,
 				name     : 'Jean Long Sleeve',
-				imageUrl :
-					'https://i.ibb.co/VpW4x5t/roll-up-jean-shirt.png',
+				imageUrl : 'https://i.ibb.co/VpW4x5t/roll-up-jean-shirt.png',
 				price    : 40
 			},
 			{
@@ -248,6 +244,6 @@ const SHOP_DATA = [
 			}
 		]
 	}
-];
+};
 
 export default SHOP_DATA;
