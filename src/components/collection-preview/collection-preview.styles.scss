@@ -6,6 +6,11 @@
 	.title {
 		font-size: 28px;
 		margin-bottom: 25px;
+		font-weight: bold;
+
+		&:hover {
+			opacity: .5;
+		}
 	}
 
 	.preview {

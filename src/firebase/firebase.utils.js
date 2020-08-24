@@ -3,23 +3,22 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const config = {
-	apiKey            : 'AIzaSyCtt-iq6TkANISNFZLE65vpwXWFfJpIRKk',
-	authDomain        : 'crwn-db-77ea8.firebaseapp.com',
-	databaseURL       : 'https://crwn-db-77ea8.firebaseio.com',
-	projectId         : 'crwn-db-77ea8',
-	storageBucket     : 'crwn-db-77ea8.appspot.com',
-	messagingSenderId : '229289620849',
-	appId             : '1:229289620849:web:b4fda7b6811954a078f2d0'
+	apiKey            : 'AIzaSyCgA3s7l1gkOZqa-VfDvjXI5fKOzbysqKg',
+	authDomain        : 'crwn-db-d6ac5.firebaseapp.com',
+	databaseURL       : 'https://crwn-db-d6ac5.firebaseio.com',
+	projectId         : 'crwn-db-d6ac5',
+	storageBucket     : 'crwn-db-d6ac5.appspot.com',
+	messagingSenderId : '250567083266',
+	appId             : '1:250567083266:web:093e86891b6ad093d8ee1b'
 };
 
-export const createUserProfileDocument = async (
-	userAuth,
-	...additionalData
-) => {
+export const createUserProfileDocument = async (userAuth, ...additionalData) => {
 	if (!userAuth) return;
 
 	const userRef = firestore.doc(`users/${userAuth.uid}`);
 	const snapShot = await userRef.get();
+
+	console.log(snapShot);
 
 	if (!snapShot.exists) {
 		const { displayName, email } = userAuth;
@@ -38,6 +37,36 @@ export const createUserProfileDocument = async (
 	}
 
 	return userRef;
+};
+
+export const addCollectionsAndDocuments = async (collectionKey, objectsToAdd) => {
+	const collectionRef = firestore.collection(collectionKey);
+	const batch = firestore.batch();
+
+	objectsToAdd.forEach(obj => {
+		const newDocRef = collectionRef.doc();
+		batch.set(newDocRef, obj);
+	});
+
+	return await batch.commit();
+};
+
+export const convertCollectionsSnapshotToMap = collections => {
+	const transformedCollection = collections.docs.map(doc => {
+		const { title, items } = doc.data();
+
+		return {
+			routeName : encodeURI(title.toLowerCase()),
+			id        : doc.id,
+			title,
+			items
+		};
+	});
+
+	return transformedCollection.reduce((accumulator, collection) => {
+		accumulator[collection.title.toLowerCase()] = collection;
+		return accumulator;
+	}, {});
 };
 
 firebase.initializeApp(config);
